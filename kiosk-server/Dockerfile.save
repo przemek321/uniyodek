@@ -1,0 +1,33 @@
+# Używamy oficjalnego obrazu Node.js na ARM (Raspberry Pi)
+FROM arm64v8/node:latest
+
+# Skopiuj pliki konfiguracyjne do katalogu roboczego w kontenerze
+COPY start_kiosk.sh /app/kiosk.sh
+COPY sendIPtoServer.sh /app/sendIPtoServer.sh
+COPY .xinitrc /app/.xinitrc
+
+# Ustawiamy katalog roboczy w Dockerze
+WORKDIR /app
+
+# Kopiujemy pliki projektu do katalogu roboczego
+COPY . /app
+
+# Instalujemy zależności systemowe, np. XServer, scrot itp.
+RUN apt-get update && apt-get install -y \
+    chromium \
+    xserver-xorg \
+    xinit \
+    scrot \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalujemy zależności Node.js (pliki package.json, package-lock.json)
+RUN npm install
+
+# Ustawiamy uprawnienia do uruchamiania skryptów
+RUN chmod +x /app/kiosk.sh /app/sendIPtoServer.sh
+
+# Uruchamiamy aplikację Node.js
+CMD ["node", "server.js"]
+CMD ["sh", "-c", "chromium-browser --kiosk --no-sandbox --disable-infobars --disable-restore-session-state --disable-popup-blocking --disable-session-crashed-bubble http://localhost && node /app/server.js"]
+n1copl@raspberrypi:~/kiosk-server $ docker logs 88a448e7e005
+sh: 1: chromium-browser: not found
