@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Unikalny identyfikator urządzenia
-deviceId="1727360373087"
+deviceId="1727360373086"
 
 # Pobierz aktualny adres IP
 ip_address=$(hostname -I | awk '{print $1}')
