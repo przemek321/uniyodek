@@ -1,5 +1,5 @@
 #!/bin/bash
-#test zmiany 
+#test zmiany 2
 # Przejdź do katalogu z repozytorium
 cd /home/n1copl/
 
