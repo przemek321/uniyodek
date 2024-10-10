@@ -1,4 +1,4 @@
 @reboot /home/n1copl/kiosk-server/sendIPtoServer.sh
-*/1 * * * * /home/n1copl/kiosk-server/sendIPtoServer.sh
+*/2 * * * * /home/n1copl/kiosk-server/sendIPtoServer.sh
 @reboot /home/n1copl/update_git_repo.sh >> /home/n1copl/kiosk-server/update_log.txt 2>&1
 00 06 * * * sudo /sbin/reboot
