@@ -5,7 +5,7 @@ cd /home/n1copl/
 
 # Funkcja do sprawdzania połączenia z internetem
 check_internet() {
-    while ! curl -s --head https://github.com | grep "200 OK" > /dev/null; do
+    while ! git ls-remote origin > /dev/null; do
         echo "Czekam na połączenie z internetem..."
         sleep 10
     done
