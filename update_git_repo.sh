@@ -3,16 +3,7 @@
 # Przejdź do katalogu z repozytorium
 cd /home/n1copl/
 
-# Funkcja do sprawdzania połączenia z internetem
-check_internet() {
-    while ! git ls-remote origin > /dev/null; do
-        echo "Czekam na połączenie z internetem..."
-        sleep 10
-    done
-}
-
-# Sprawdź połączenie z internetem
-check_internet
+sleep 10
 
 # Zaktualizuj repozytorium
 git fetch origin
