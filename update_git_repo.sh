@@ -1,12 +1,18 @@
 #!/bin/bash
-#test zmiany 2
+# test zmiany 2
 # Przejdź do katalogu z repozytorium
-while ! ping -c 1 -W 1 github.com; do
-    echo "Czekam na połączenie z internetem..."
-    sleep 10
-done
-
 cd /home/n1copl/
+
+# Funkcja do sprawdzania połączenia z internetem
+check_internet() {
+    while ! curl -s --head https://github.com | grep "200 OK" > /dev/null; do
+        echo "Czekam na połączenie z internetem..."
+        sleep 10
+    done
+}
+
+# Sprawdź połączenie z internetem
+check_internet
 
 # Zaktualizuj repozytorium
 git fetch origin
