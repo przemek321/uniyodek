@@ -1,8 +1,9 @@
 #!/bin/bash
 # test zmiany 2
 # Przejdź do katalogu z repozytorium
+sudo journalctl --vacuum-time=7d
+sleep 5
 cd /home/n1copl/
-
 sleep 10
 
 # Zaktualizuj repozytorium
