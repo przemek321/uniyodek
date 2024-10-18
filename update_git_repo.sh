@@ -1,6 +1,6 @@
 #!/bin/bash
 # test zmiany 2
-# Przejdź do katalogu z repozytorium
+# czyscimy logi, w pamieci sprawdzic jeszcze bledy z xwin
 sudo journalctl --vacuum-time=7d 
 sleep 5
 cd /home/n1copl/
